@@ -28,6 +28,21 @@ app.post("/search",(req,res)=>{
     )
 })
 
+
+app.post("/delete",(req,res)=>{
+    let input = req.body
+    shoemodel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({"status":"deleted"})
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
+
+
 app.get("/view",(req,res)=>{
     shoemodel.find().then(
         (data)=>{
