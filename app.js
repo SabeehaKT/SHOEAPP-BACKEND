@@ -15,6 +15,19 @@ app.post("/add",(req,res)=>{
     res.json({"status":"added"})
 })
 
+app.post("/search",(req,res)=>{
+    let input = req.body
+    shoemodel.find(input).then(
+        (data=>{
+            res.json(data)
+        })
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
+
 app.get("/view",(req,res)=>{
     shoemodel.find().then(
         (data)=>{
